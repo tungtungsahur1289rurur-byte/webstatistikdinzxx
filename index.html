@@ -1,0 +1,1247 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>DINZXX STORE</title>
+
+<style>
+
+:root{
+    --orange:#ff7a00;
+    --bg:#050505;
+    --card:#0d0d0d;
+    --input:#080808;
+    --text:#ffffff;
+    --muted:#858585;
+    --border:#242424;
+}
+
+body.light{
+    --bg:#f4f4f4;
+    --card:#ffffff;
+    --input:#eeeeee;
+    --text:#111111;
+    --muted:#666666;
+    --border:#dddddd;
+}
+
+*{
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    transition:.25s;
+}
+
+.container{
+    max-width:1100px;
+    margin:auto;
+    padding:20px;
+}
+
+/* HEADER */
+
+.header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:25px;
+}
+
+.logo{
+    font-size:27px;
+    font-weight:900;
+    letter-spacing:.5px;
+}
+
+.logo span{
+    color:var(--orange);
+}
+
+.subtitle{
+    color:var(--muted);
+    font-size:13px;
+    margin-top:5px;
+}
+
+.theme{
+    background:var(--card);
+    color:var(--text);
+    border:1px solid var(--border);
+    border-radius:10px;
+    padding:10px 14px;
+    cursor:pointer;
+}
+
+/* CARDS */
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:14px;
+}
+
+.card{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:15px;
+    padding:19px;
+}
+
+.card small{
+    color:var(--muted);
+}
+
+.money{
+    margin-top:9px;
+    font-size:25px;
+    font-weight:800;
+}
+
+.orange{
+    color:var(--orange);
+}
+
+.green{
+    color:#20c878;
+}
+
+.red{
+    color:#ff5364;
+}
+
+/* MAIN */
+
+.main{
+    display:grid;
+    grid-template-columns:330px 1fr;
+    gap:15px;
+    margin-top:15px;
+}
+
+.panel{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:15px;
+    padding:19px;
+}
+
+h2{
+    margin:0 0 15px;
+    font-size:18px;
+}
+
+/* TYPE */
+
+.type{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:8px;
+    margin-bottom:10px;
+}
+
+.type button{
+    border:1px solid var(--border);
+    background:var(--input);
+    color:var(--muted);
+    padding:11px;
+    border-radius:9px;
+    cursor:pointer;
+}
+
+.type .active{
+    background:var(--orange);
+    border-color:var(--orange);
+    color:#fff;
+}
+
+/* INPUT */
+
+input,
+select{
+    width:100%;
+    padding:12px;
+
+    background:var(--input);
+    color:var(--text);
+
+    border:1px solid var(--border);
+    border-radius:9px;
+
+    outline:none;
+    margin-bottom:10px;
+}
+
+input:focus,
+select:focus{
+    border-color:var(--orange);
+}
+
+/* BUTTON */
+
+.add{
+    width:100%;
+    padding:12px;
+
+    background:var(--orange);
+    color:#fff;
+
+    border:0;
+    border-radius:9px;
+
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.reset{
+    background:transparent;
+    color:#ff5364;
+
+    border:1px solid #ff5364;
+    border-radius:9px;
+
+    padding:10px 14px;
+    cursor:pointer;
+}
+
+/* TOOLBAR */
+
+.toolbar{
+    display:flex;
+    gap:8px;
+    margin-bottom:12px;
+}
+
+.toolbar input{
+    margin:0;
+}
+
+.toolbar select{
+    width:160px;
+    margin:0;
+}
+
+/* TABLE */
+
+.table{
+    overflow-x:auto;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+th,
+td{
+    padding:12px 8px;
+    text-align:left;
+    border-bottom:1px solid var(--border);
+}
+
+th{
+    color:var(--muted);
+    font-size:12px;
+}
+
+td{
+    font-size:14px;
+}
+
+.badge{
+    display:inline-block;
+    padding:5px 8px;
+    border-radius:6px;
+    font-size:10px;
+    font-weight:bold;
+}
+
+.badge.in{
+    background:#103b2a;
+    color:#32d58a;
+}
+
+.badge.out{
+    background:#411d26;
+    color:#ff6472;
+}
+
+.delete{
+    background:transparent;
+    border:1px solid #ff5364;
+    color:#ff5364;
+
+    padding:6px 9px;
+    border-radius:7px;
+
+    cursor:pointer;
+}
+
+/* CHART */
+
+.chart-panel{
+    margin-top:15px;
+}
+
+.chart{
+    height:180px;
+
+    display:flex;
+    align-items:end;
+    justify-content:center;
+
+    gap:30px;
+
+    border-bottom:1px solid var(--border);
+}
+
+.bar{
+    width:55px;
+    min-height:5px;
+
+    border-radius:8px 8px 0 0;
+
+    transition:.4s;
+}
+
+.bar.in{
+    background:#20c878;
+}
+
+.bar.out{
+    background:#ff5364;
+}
+
+.legend{
+    color:var(--muted);
+    font-size:12px;
+    margin-top:12px;
+}
+
+.empty{
+    text-align:center;
+    color:var(--muted);
+    padding:30px;
+}
+
+/* MOBILE */
+
+@media(max-width:750px){
+
+    .cards{
+        grid-template-columns:1fr;
+    }
+
+    .main{
+        grid-template-columns:1fr;
+    }
+
+    .header{
+        align-items:flex-start;
+    }
+
+    .toolbar{
+        flex-direction:column;
+    }
+
+    .toolbar select{
+        width:100%;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+<div class="container">
+
+    <!-- HEADER -->
+
+    <div class="header">
+
+        <div>
+
+            <div class="logo">
+                DINZXX <span>STORE</span>
+            </div>
+
+            <div class="subtitle">
+                Pengeluaran • Pemasukan • Keuntungan
+            </div>
+
+        </div>
+
+
+        <div>
+
+            <button
+                class="theme"
+                onclick="toggleTheme()"
+                id="themeButton">
+
+                ☀️ White
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- SUMMARY -->
+
+    <div class="cards">
+
+        <div class="card">
+
+            <small>
+                UNTUNG BERSIH
+            </small>
+
+            <div
+                class="money orange"
+                id="profit">
+
+                Rp0
+
+            </div>
+
+        </div>
+
+
+        <div class="card">
+
+            <small>
+                TOTAL PEMASUKAN
+            </small>
+
+            <div
+                class="money green"
+                id="income">
+
+                Rp0
+
+            </div>
+
+        </div>
+
+
+        <div class="card">
+
+            <small>
+                TOTAL PENGELUARAN
+            </small>
+
+            <div
+                class="money red"
+                id="expense">
+
+                Rp0
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- MAIN -->
+
+    <div class="main">
+
+
+        <!-- ADD TRANSACTION -->
+
+        <div class="panel">
+
+            <h2>
+                Tambah Transaksi
+            </h2>
+
+
+            <div class="type">
+
+                <button
+                    id="incomeButton"
+                    class="active"
+                    onclick="setType('in')">
+
+                    Pemasukan
+
+                </button>
+
+
+                <button
+                    id="expenseButton"
+                    onclick="setType('out')">
+
+                    Pengeluaran
+
+                </button>
+
+            </div>
+
+
+            <input
+                id="description"
+                type="text"
+                placeholder="Nama transaksi">
+
+
+            <input
+                id="amount"
+                type="number"
+                placeholder="Nominal Rp">
+
+
+            <select id="category">
+
+                <option>
+                    Penjualan
+                </option>
+
+                <option>
+                    Modal
+                </option>
+
+                <option>
+                    Operasional
+                </option>
+
+                <option>
+                    Stok
+                </option>
+
+                <option>
+                    Transportasi
+                </option>
+
+                <option>
+                    Lainnya
+                </option>
+
+            </select>
+
+
+            <input
+                id="date"
+                type="date">
+
+
+            <button
+                class="add"
+                onclick="addTransaction()">
+
+                + Tambah Transaksi
+
+            </button>
+
+        </div>
+
+
+        <!-- TRANSACTIONS -->
+
+        <div class="panel">
+
+            <h2>
+                Riwayat Transaksi
+            </h2>
+
+
+            <div class="toolbar">
+
+                <input
+                    id="search"
+                    type="text"
+                    placeholder="Cari transaksi..."
+                    oninput="render()">
+
+
+                <select
+                    id="filter"
+                    onchange="render()">
+
+                    <option value="all">
+                        Semua
+                    </option>
+
+                    <option value="in">
+                        Pemasukan
+                    </option>
+
+                    <option value="out">
+                        Pengeluaran
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="table">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Tanggal
+                            </th>
+
+                            <th>
+                                Nama
+                            </th>
+
+                            <th>
+                                Kategori
+                            </th>
+
+                            <th>
+                                Jenis
+                            </th>
+
+                            <th>
+                                Nominal
+                            </th>
+
+                            <th>
+                                Aksi
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="list">
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- CHART -->
+
+    <div class="panel chart-panel">
+
+        <h2>
+            Statistik
+        </h2>
+
+
+        <div class="chart">
+
+            <div
+                id="incomeBar"
+                class="bar in">
+            </div>
+
+
+            <div
+                id="expenseBar"
+                class="bar out">
+            </div>
+
+        </div>
+
+
+        <div class="legend">
+
+            🟢 Pemasukan
+            &nbsp;&nbsp;&nbsp;
+            🔴 Pengeluaran
+
+        </div>
+
+    </div>
+
+
+    <!-- RESET -->
+
+    <div style="
+        margin-top:15px;
+        text-align:right;
+    ">
+
+        <button
+            class="reset"
+            onclick="resetData()">
+
+            Reset Semua Data
+
+        </button>
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* DATA */
+
+let type = "in";
+
+let transactions =
+    JSON.parse(
+        localStorage.getItem(
+            "dinzxx_store_data"
+        )
+    ) || [];
+
+
+/* DATE */
+
+document
+    .getElementById("date")
+    .value =
+    new Date()
+    .toISOString()
+    .split("T")[0];
+
+
+/* THEME */
+
+function toggleTheme(){
+
+    document
+        .body
+        .classList
+        .toggle("light");
+
+
+    const light =
+        document
+        .body
+        .classList
+        .contains("light");
+
+
+    document
+        .getElementById("themeButton")
+        .innerHTML =
+        light
+        ? "🌙 Black"
+        : "☀️ White";
+
+
+    localStorage.setItem(
+        "dinzxx_theme",
+        light
+        ? "light"
+        : "dark"
+    );
+
+}
+
+
+/* LOAD THEME */
+
+if(
+    localStorage.getItem(
+        "dinzxx_theme"
+    ) === "light"
+){
+
+    document
+        .body
+        .classList
+        .add("light");
+
+
+    document
+        .getElementById(
+            "themeButton"
+        )
+        .innerHTML =
+        "🌙 Black";
+
+}
+
+
+/* TYPE */
+
+function setType(value){
+
+    type = value;
+
+
+    document
+        .getElementById(
+            "incomeButton"
+        )
+        .classList
+        .toggle(
+            "active",
+            value === "in"
+        );
+
+
+    document
+        .getElementById(
+            "expenseButton"
+        )
+        .classList
+        .toggle(
+            "active",
+            value === "out"
+        );
+
+}
+
+
+/* RUPIAH */
+
+function rupiah(number){
+
+    return new Intl.NumberFormat(
+        "id-ID",
+        {
+            style:"currency",
+            currency:"IDR",
+            maximumFractionDigits:0
+        }
+    ).format(number);
+
+}
+
+
+/* ADD */
+
+function addTransaction(){
+
+    const description =
+        document
+        .getElementById(
+            "description"
+        )
+        .value
+        .trim();
+
+
+    const amount =
+        Number(
+            document
+            .getElementById(
+                "amount"
+            )
+            .value
+        );
+
+
+    const category =
+        document
+        .getElementById(
+            "category"
+        )
+        .value;
+
+
+    const date =
+        document
+        .getElementById(
+            "date"
+        )
+        .value;
+
+
+    if(
+        !description ||
+        amount <= 0 ||
+        !date
+    ){
+
+        alert(
+            "Lengkapi data transaksi!"
+        );
+
+        return;
+
+    }
+
+
+    transactions.push({
+
+        id:Date.now(),
+
+        type:type,
+
+        description:
+            description,
+
+        amount:
+            amount,
+
+        category:
+            category,
+
+        date:
+            date
+
+    });
+
+
+    saveData();
+
+
+    document
+        .getElementById(
+            "description"
+        )
+        .value = "";
+
+
+    document
+        .getElementById(
+            "amount"
+        )
+        .value = "";
+
+}
+
+
+/* DELETE */
+
+function deleteTransaction(id){
+
+    transactions =
+        transactions.filter(
+            item =>
+                item.id !== id
+        );
+
+
+    saveData();
+
+}
+
+
+/* RESET */
+
+function resetData(){
+
+    if(
+        confirm(
+            "Yakin ingin menghapus semua data?"
+        )
+    ){
+
+        transactions = [];
+
+        saveData();
+
+    }
+
+}
+
+
+/* SAVE */
+
+function saveData(){
+
+    localStorage.setItem(
+        "dinzxx_store_data",
+        JSON.stringify(
+            transactions
+        )
+    );
+
+
+    render();
+
+}
+
+
+/* RENDER */
+
+function render(){
+
+    let income = 0;
+
+    let expense = 0;
+
+
+    transactions.forEach(
+        item => {
+
+            if(
+                item.type === "in"
+            ){
+
+                income +=
+                    item.amount;
+
+            }else{
+
+                expense +=
+                    item.amount;
+
+            }
+
+        }
+    );
+
+
+    const profit =
+        income - expense;
+
+
+    document
+        .getElementById(
+            "income"
+        )
+        .innerText =
+        rupiah(income);
+
+
+    document
+        .getElementById(
+            "expense"
+        )
+        .innerText =
+        rupiah(expense);
+
+
+    document
+        .getElementById(
+            "profit"
+        )
+        .innerText =
+        rupiah(profit);
+
+
+    /* CHART */
+
+    const max =
+        Math.max(
+            income,
+            expense,
+            1
+        );
+
+
+    document
+        .getElementById(
+            "incomeBar"
+        )
+        .style.height =
+        (
+            income /
+            max *
+            100
+        ) + "%";
+
+
+    document
+        .getElementById(
+            "expenseBar"
+        )
+        .style.height =
+        (
+            expense /
+            max *
+            100
+        ) + "%";
+
+
+    /* SEARCH */
+
+    const search =
+        document
+        .getElementById(
+            "search"
+        )
+        .value
+        .toLowerCase();
+
+
+    const filter =
+        document
+        .getElementById(
+            "filter"
+        )
+        .value;
+
+
+    const filtered =
+        transactions
+        .filter(item => {
+
+            const matchSearch =
+                item.description
+                .toLowerCase()
+                .includes(
+                    search
+                );
+
+
+            const matchFilter =
+                filter === "all" ||
+                item.type === filter;
+
+
+            return (
+                matchSearch &&
+                matchFilter
+            );
+
+        })
+        .sort(
+            (a,b) =>
+                b.date.localeCompare(
+                    a.date
+                )
+        );
+
+
+    let html = "";
+
+
+    filtered.forEach(
+        item => {
+
+            html += `
+
+                <tr>
+
+                    <td>
+                        ${item.date}
+                    </td>
+
+                    <td>
+                        ${escapeHTML(
+                            item.description
+                        )}
+                    </td>
+
+                    <td>
+                        ${escapeHTML(
+                            item.category
+                        )}
+                    </td>
+
+                    <td>
+
+                        <span
+                            class="badge ${
+                                item.type
+                            }">
+
+                            ${
+                                item.type === "in"
+                                ? "MASUK"
+                                : "KELUAR"
+                            }
+
+                        </span>
+
+                    </td>
+
+                    <td>
+                        ${rupiah(
+                            item.amount
+                        )}
+                    </td>
+
+                    <td>
+
+                        <button
+                            class="delete"
+                            onclick="deleteTransaction(
+                                ${item.id}
+                            )">
+
+                            Hapus
+
+                        </button>
+
+                    </td>
+
+                </tr>
+
+            `;
+
+        }
+    );
+
+
+    if(!html){
+
+        html = `
+
+            <tr>
+
+                <td
+                    colspan="6"
+                    class="empty">
+
+                    Belum ada transaksi
+
+                </td>
+
+            </tr>
+
+        `;
+
+    }
+
+
+    document
+        .getElementById(
+            "list"
+        )
+        .innerHTML =
+        html;
+
+}
+
+
+/* ESCAPE HTML */
+
+function escapeHTML(text){
+
+    return text.replace(
+        /[&<>"']/g,
+        function(char){
+
+            return {
+
+                "&":"&amp;",
+                "<":"&lt;",
+                ">":"&gt;",
+                '"':"&quot;",
+                "'":"&#039;"
+
+            }[char];
+
+        }
+    );
+
+}
+
+
+/* START */
+
+render();
+
+</script>
+
+</body>
+</html>
